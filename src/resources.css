@@ -1,0 +1,55 @@
+* {
+  font-family: "Mingzat", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  /* color: white; */
+}
+
+header {
+  max-block-size: 100%;
+}
+
+h1 {
+  margin-inline-start: 27%;
+  writing-mode: horizontal-tb;
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+nav {
+  margin-inline-start: 27%;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-underline-position: below;
+  text-decoration: underline;
+}
+
+body {
+  background-color: rgb(55, 76, 100);
+  line-height: 1.5;
+}
+
+main {
+  font-size: 15px;
+  display: block;
+  text-align: left;
+  margin-left: 33%;
+}
+
+ul {
+  color: lightcoral;
+}
+
+iframe {
+  width: 560px;
+  height: 315px;
+}

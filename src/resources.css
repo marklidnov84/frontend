@@ -5,8 +5,8 @@
   /* color: white; */
 }
 
-header {
-  max-block-size: 100%;
+.default-header {
+  color: white;
 }
 
 h1 {
@@ -20,7 +20,18 @@ h2 {
 }
 
 nav {
-  margin-inline-start: 27%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border: 1px white solid;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  margin-left: 25%;
+  margin-right: 25%;
+  overflow: hidden;
 }
 
 a {
@@ -36,6 +47,10 @@ a:hover {
 body {
   background-color: rgb(55, 76, 100);
   line-height: 1.5;
+  color: white;
+
+  border-color: black;
+  border: 5px;
 }
 
 main {

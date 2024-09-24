@@ -2,11 +2,10 @@
   font-family: "Mingzat", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: white;
 }
 
-header {
-  max-block-size: 100%;
+.default-header {
+  color: white;
 }
 
 h1 {
@@ -15,11 +14,23 @@ h1 {
 }
 
 nav {
-  margin-inline-start: 27%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border: 1px white solid;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  margin-left: 25%;
+  margin-right: 25%;
+  overflow: hidden;
 }
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 a:hover {
@@ -30,14 +41,17 @@ a:hover {
 body {
   background-color: rgb(55, 76, 100);
   line-height: 1.5;
+  color: white;
+
+  border-color: black;
+  border: 5px;
 }
 
 img {
   display: block;
   max-width: 50%;
-  height: auto;
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
 }
 
 main {

@@ -47,6 +47,21 @@ body {
   border: 5px;
 }
 
+.beautiful {
+  display: block;
+  padding: 0%;
+  max-width: 35%;
+
+  margin-bottom: 0%;
+  margin-top: 0%;
+  margin-left: 0%;
+  margin-right: 0%;
+
+  z-index: -1;
+
+  position: absolute;
+}
+
 main {
   font-size: 15px;
   display: block;

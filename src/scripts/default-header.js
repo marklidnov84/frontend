@@ -6,7 +6,9 @@ class CustomHeader extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <header>
-      <h1>place where magic happens</h1>
+    <img src="./assets/miyamoto4.png" class="beautiful">
+
+    <h1>place where magic happens</h1>
       <nav>
         <a href="./home.html">home</a>
         <a href="./about.html">about</a>

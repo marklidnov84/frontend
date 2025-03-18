@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>meth lab</title>
+
+        <link rel="stylesheet" href="./todo.css" />
+        <meta charset="UTF-8" />
+        <meta name="author" content="Mark" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- facebook media card? -->
+        <meta property="og:title" content="mark" />
+        <meta property="og:description" content="forsaken principle engineer" />
+        <meta
+            property="og:image"
+            content="https://images.squarespace-cdn.com/content/v1/57825361440243db4a4b7830/aec5eb0d-c88c-40fe-bc0e-52898af4b9ac/Guts.jpeg?format=1500w"
+        />
+
+        <!-- x media card? -->
+        <meta property="twitter:card" content="what do i put here?" />
+        <meta property="twitter:url" content="what do i put here?" />
+        <meta property="twitter:title" content="mark" />
+        <meta
+            property="twitter:description"
+            content="live life to the fullest"
+        />
+        <meta
+            property="twitter:image"
+            content="https://images.squarespace-cdn.com/content/v1/57825361440243db4a4b7830/aec5eb0d-c88c-40fe-bc0e-52898af4b9ac/Guts.jpeg?format=1500w"
+        />
+
+        <link rel="icon" type="image/jpg" href="../ezgif-5-9285be3f13.jpg" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Mingzat&display=swap"
+            rel="stylesheet"
+        />
+
+        <script
+            src="./scripts/default-header.js"
+            type="text/javascript"
+            defer
+        ></script>
+    </head>
+
+    <body>
+        <default-header></default-header>
+
+        <h1 id="header">Best Todo App Ever</h1>
+        <article>
+            <input type="text" id="todoInput" name="New Todo" />
+            <button id="addTodoButton">Add Todo</button>
+        </article>
+
+        <section>
+            <h1 id="todos">Todos:</h1>
+            <ul id="todoList"></ul>
+        </section>
+
+        <script>
+            let cachePreloaded = false;
+            let todos = JSON.parse(localStorage.getItem("todos"));
+
+            // preloading phase where cache is check for todos
+            if (!todos) {
+                localStorage.setItem("todos", JSON.stringify([]));
+            } else if (!cachePreloaded) {
+                todos.forEach((todo) => {
+                    const newTodo = document.createElement("li");
+
+                    const removeButton = document.createElement("button");
+                    removeButton.setAttribute("style", "color: black;");
+                    removeButton.innerHTML = "Del";
+                    removeButton.onclick = delButtonOnClick;
+
+                    const textButton = document.createElement("button");
+
+                    let style =
+                        "background: none; border: none; color: white; font-size: 25px;";
+                    if (todo.completed)
+                        style += "text-decoration: line-through";
+
+                    textButton.setAttribute("style", style);
+                    textButton.innerHTML = todo.task;
+
+                    textButton.onclick = strikeThroughOnClick;
+
+                    newTodo.append(textButton);
+                    newTodo.append(removeButton);
+
+                    document.getElementById("todoList").appendChild(newTodo);
+                });
+
+                cachePreloaded = true;
+            }
+
+            const addTodoButton = document.getElementById("addTodoButton");
+
+            addTodoButton.onclick = addTodo;
+
+            function addTodo() {
+                const addTodoButton = document.getElementById("addTodoButton");
+
+                const todos = document.getElementById("todoList");
+                const todoInput = document.getElementById("todoInput");
+
+                if (!todoInput.value) {
+                    console.log("empty todo");
+                    return;
+                }
+
+                const newTodo = document.createElement("li");
+
+                const removeButton = document.createElement("button");
+                removeButton.setAttribute("style", "color: black;");
+                removeButton.innerHTML = "Del";
+                removeButton.onclick = delButtonOnClick;
+
+                const textButton = document.createElement("button");
+                textButton.setAttribute(
+                    "style",
+                    "background: none; border: none; color: white; font-size: 25px;"
+                );
+                textButton.innerHTML = todoInput.value;
+
+                textButton.onclick = strikeThroughOnClick;
+
+                newTodo.append(textButton);
+                newTodo.append(removeButton);
+
+                todos.appendChild(newTodo);
+
+                cacheTodo({ task: todoInput.value, completed: false });
+
+                // reset input field
+                todoInput.value = "";
+            }
+
+            function delButtonOnClick(e) {
+                e.target.parentNode.remove();
+                removeTodoFromCache(e.target.parentNode.firstChild.innerHTML);
+            }
+
+            function strikeThroughOnClick(e) {
+                const decoration = e.target.style.textDecoration;
+                let completed = false;
+
+                if (decoration !== "line-through") {
+                    e.target.style.textDecoration = "line-through";
+                    completed = true;
+                } else {
+                    e.target.style.textDecoration = "";
+                    completed = false;
+                }
+
+                cacheTodo({
+                    task: e.target.parentNode.firstChild.innerHTML,
+                    completed,
+                });
+            }
+
+            function cacheTodo(todo) {
+                if (!todo) {
+                    alert("Error caching todos");
+                }
+
+                todos = JSON.parse(localStorage.getItem("todos"));
+
+                const alreadyExists = todos.findIndex(
+                    (t) => t.task == todo.task
+                );
+
+                if (alreadyExists > -1) {
+                    // invert
+                    todos[alreadyExists].completed =
+                        !todos[alreadyExists].completed;
+                } else {
+                    todos.push(todo);
+                }
+
+                localStorage.setItem("todos", JSON.stringify(todos));
+            }
+
+            function removeTodoFromCache(todo) {
+                if (!todo) {
+                    alert("Error removing cached todo");
+                }
+
+                todos = JSON.parse(localStorage.getItem("todos"));
+
+                localStorage.setItem(
+                    "todos",
+                    JSON.stringify(todos.filter((e) => e.task != todo))
+                );
+            }
+        </script>
+    </body>
+</html>

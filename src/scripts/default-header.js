@@ -1,10 +1,10 @@
 class CustomHeader extends HTMLElement {
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  connectedCallback() {
-    this.innerHTML = `
+    connectedCallback() {
+        this.innerHTML = `
     <header>
     <img src="./assets/miyamoto4.png" class="beautiful">
 
@@ -13,6 +13,7 @@ class CustomHeader extends HTMLElement {
         <a href="./home.html">home</a>
         <a href="./about.html">about</a>
         <a href="./resources.html">resources</a>
+        <a href="./todo.html">todo</a>
 
         <a
           href="https://github.com/marklidnov84"
@@ -58,7 +59,7 @@ class CustomHeader extends HTMLElement {
         </a>
       </nav>
     </header>`;
-  }
+    }
 }
 
 customElements.define("default-header", CustomHeader);

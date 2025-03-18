@@ -2,18 +2,44 @@
     font-family: "Mingzat", sans-serif;
     font-weight: 400;
     font-style: normal;
+    color: white;
 }
 
 .default-header {
     color: white;
 }
 
-h1 {
+article {
     display: flex;
     justify-content: center;
-    margin-top: 0;
-    margin-bottom: 1rem;
+}
 
+#addTodoButton {
+    background-color: rgb(55, 76, 100);
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#todoInput {
+    color: black;
+}
+
+ul {
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    margin-inline-start: 27%;
     writing-mode: horizontal-tb;
 }
 
@@ -30,13 +56,10 @@ nav {
     margin-left: 25%;
     margin-right: 25%;
     overflow: hidden;
-
-    z-index: 0;
 }
 
 a {
     text-decoration: none;
-    color: white;
 }
 
 a:hover {
@@ -51,17 +74,6 @@ body {
 
     border-color: black;
     border: 5px;
-
-    z-index: 0;
-}
-
-img {
-    display: block;
-    max-width: 50%;
-    margin-left: 33%;
-    margin-right: 33%;
-
-    position: absolute;
 }
 
 .beautiful {
@@ -84,8 +96,4 @@ main {
     display: block;
     text-align: left;
     margin-left: 33%;
-}
-
-footer {
-    text-align: center;
 }
